@@ -18,8 +18,6 @@ class MoviesFragment: Fragment() {
     ): View {
         binding = FragmentMoviesBinding.inflate(inflater, container, false)
 
-
-
         return binding.root
 
     }
