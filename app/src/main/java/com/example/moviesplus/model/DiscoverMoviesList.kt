@@ -15,6 +15,6 @@ data class DiscoverMoviesList(
     @SerializedName("release_date") var release_date:String,
     @SerializedName("title") var title:String,
     @SerializedName("video") var video:Boolean,
-    @SerializedName("vote_average") var vote_average:Int,
+    @SerializedName("vote_average") var vote_average:Double,
     @SerializedName("vote_count") var vote_count:Int,
     )
