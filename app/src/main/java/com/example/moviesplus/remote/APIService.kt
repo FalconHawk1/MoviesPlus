@@ -9,5 +9,5 @@ import retrofit2.http.Url
 
 interface APIService {
     @GET("discover/movie")
-    suspend fun getMoviesByCategory(@Header("Authorization") key:String): Response<MoviesResponse?>?
+    suspend fun discoverMovies(): Response<MoviesResponse?>?
 }

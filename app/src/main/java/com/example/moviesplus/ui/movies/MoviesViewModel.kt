@@ -1,5 +1,6 @@
 package com.example.moviesplus.ui.movies
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,8 +19,10 @@ class MoviesViewModel : ViewModel(){
 
     fun getMovies(){
         viewModelScope.launch {
-            val response = moviesRepository.getMovies()
+            val response = moviesRepository.discoverMovies()
             _movies.value = response
+
+            Log.d("TAGI", _movies.value.toString())
         }
     }
 }
