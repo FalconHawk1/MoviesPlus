@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/black"
     tools:context=".ui.movies.MoviesFragment">
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/feed_items_list"
+        android:id="@+id/feed_header"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:layout_marginTop="-112dp"
         tools:itemCount="1"
-        android:background="@color/black" />
+        android:background="@color/black"
+        tools:listitem="@layout/item_feed_header" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_layout"
@@ -68,7 +67,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/my_list"
+                android:id="@+id/categories_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -76,11 +75,18 @@
                 android:background="?selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="My List"
+                android:text="Categories"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/feed_items_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:itemCount="1"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</layout>

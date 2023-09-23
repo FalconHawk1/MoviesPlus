@@ -10,20 +10,24 @@ import com.example.moviesplus.databinding.ItemPosterBinding
 import com.example.moviesplus.model.DiscoverMoviesList
 import com.squareup.picasso.Picasso
 
-class MoviesAdapter(internal var list: List<DiscoverMoviesList>) : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
+class MoviesAdapter(internal var list: List<DiscoverMoviesList>) :
+    RecyclerView.Adapter<MoviesAdapter.MoviesHorizontalListViewHolder>() {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MoviesHorizontalListViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_poster, parent, false)
-        return MoviesViewHolder(view)
+        return MoviesHorizontalListViewHolder(view)
     }
 
     override fun getItemCount(): Int = list.size
-    override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MoviesHorizontalListViewHolder, position: Int) {
         val item = list[position]
         holder.bind(CommonUtils.IMAGE_URL_BASE + item.backdrop_path)
     }
 
-    class MoviesViewHolder(view: View): RecyclerView.ViewHolder(view)  {
+    class MoviesHorizontalListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val binding = ItemPosterBinding.bind(view)
 
