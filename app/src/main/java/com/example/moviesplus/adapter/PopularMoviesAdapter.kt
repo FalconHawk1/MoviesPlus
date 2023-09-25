@@ -3,33 +3,31 @@ package com.example.moviesplus.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesplus.R
 import com.example.moviesplus.common.CommonUtils
-import com.example.moviesplus.databinding.ItemMediaBinding
 import com.example.moviesplus.databinding.ItemPosterBinding
 import com.example.moviesplus.model.DiscoverMoviesList
 import com.squareup.picasso.Picasso
 
-class MoviesAdapter(private var list: List<DiscoverMoviesList>, val onItemClick:(itemId:Int)-> Unit) :
-    RecyclerView.Adapter<MoviesAdapter.MoviesHorizontalListViewHolder>() {
+class PopularMoviesAdapter(private var list: List<DiscoverMoviesList>, val onItemClick:(itemId:Int)-> Unit) :
+    RecyclerView.Adapter<PopularMoviesAdapter.PopularMoviesViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): MoviesHorizontalListViewHolder {
+    ): PopularMoviesViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_media, parent, false)
-        return MoviesHorizontalListViewHolder(view)
+            .inflate(R.layout.item_poster, parent, false)
+        return PopularMoviesViewHolder(view)
     }
 
     override fun getItemCount(): Int = list.size
-    override fun onBindViewHolder(holder: MoviesHorizontalListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PopularMoviesViewHolder, position: Int) {
         val item = list[position]
-        holder.bind(item.id,CommonUtils.IMAGE_URL_BASE + item.backdrop_path)
+        holder.bind(item.id, CommonUtils.IMAGE_URL_BASE + item.backdrop_path)
     }
 
-     inner class MoviesHorizontalListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class PopularMoviesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val binding = ItemPosterBinding.bind(view)
 

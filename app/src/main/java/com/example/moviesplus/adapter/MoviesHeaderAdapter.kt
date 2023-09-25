@@ -26,7 +26,7 @@ class MoviesHeaderAdapter(internal val list: List<DiscoverMoviesList>) :
         position: Int
     ) {
         val item = list[0]
-        holder.bind(CommonUtils.IMAGE_URL_BASE + item.backdrop_path)
+        holder.bind(CommonUtils.IMAGE_URL_BASE + item.poster_path)
     }
 
     override fun getItemCount(): Int = 1

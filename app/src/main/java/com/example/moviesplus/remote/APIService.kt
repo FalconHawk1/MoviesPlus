@@ -13,4 +13,8 @@ interface APIService {
     suspend fun discoverMovies(): Response<MoviesResponse?>?
     @GET("discover/tv")
     suspend fun discoverTv(): Response<TvResponse?>?
+    @GET("movie/popular")
+    suspend fun popularMovies(): Response<MoviesResponse?>?
+    @GET("tv/popular")
+    suspend fun popularTvShow(): Response<TvResponse?>?
 }

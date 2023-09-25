@@ -7,4 +7,5 @@
     <color name="black_transparent">#BF000000</color>
     <color name="text_primary">#E6E6E6</color>
     <color name="dark_gray">#262626</color>
+    <color name="red">#C11515</color>
 </resources>

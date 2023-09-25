@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ui.movies.MoviesFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,6 +20,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_marginTop="-112dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="1"
@@ -31,17 +32,20 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             app:elevation="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:id="@+id/stickbar_layout"
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:gravity="center"
+                android:divider="@drawable/divider"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:paddingHorizontal="16dp"
-                app:layout_scrollFlags="noScroll">
+                android:showDividers="middle"
+                app:layout_scrollFlags="scroll|enterAlways">
 
                 <ImageView
                     android:layout_width="32dp"
@@ -49,8 +53,31 @@
                     android:layout_marginStart="-8dp"
                     android:src="@drawable/logo" />
 
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/search_icon"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="4dp"
+                    android:src="@drawable/search" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/stickbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:paddingHorizontal="16dp"
+                app:layout_scrollFlags="noScroll">
+
                 <TextView
-                    android:id="@+id/tv_shows_tv"
+                    android:id="@+id/tv_shows"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -63,7 +90,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/movies_tv"
+                    android:id="@+id/movies"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -98,14 +125,13 @@
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/feed_header"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="5dp">
 
             <TextView
                 android:id="@+id/txtTvItems"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="Previews"
                 android:textColor="@color/white"
                 android:textSize="20sp"/>
@@ -117,7 +143,8 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 tools:itemCount="1"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                tools:listitem="@layout/item_media" />
 
             <TextView
                 android:id="@+id/txtMoviesItems"
@@ -135,7 +162,8 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 tools:itemCount="1"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                tools:listitem="@layout/item_media"/>
 
         </LinearLayout>
 
