@@ -17,6 +17,10 @@
         <action
             android:id="@+id/action_fragment_home_to_fragment_tv"
             app:destination="@id/fragment_tv" />
+
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_movies_details"
+            app:destination="@id/fragment_movies_details" />
     </fragment>
 
 
@@ -29,5 +33,10 @@
         android:id="@+id/fragment_tv"
         android:name="com.example.moviesplus.ui.tv.PopularTvFragment"
         tools:layout="@layout/fragment_popular_tv" />
+
+    <fragment
+        android:id="@+id/fragment_movies_details"
+        android:name="com.example.moviesplus.ui.details.MoviesDetailsFragment"
+        tools:layout="@layout/fragment_movies_details" />
 
 </navigation>

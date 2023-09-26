@@ -62,9 +62,9 @@ class HomeFragment: Fragment() {
                 viewModel.movies.observe(viewLifecycleOwner) {
                 it?.let {
                     adapter = MoviesAdapter(it.results){ id->
-                        Toast.makeText(requireContext(), "Mi id es: $id", Toast.LENGTH_SHORT).show()
-                        //findNavController().navigate(R.id.)
-                        //findNavController().navigate(MoviesFragmentDirections.actionMoviesFragmentToDetailFragment(id))
+                        val bundle = Bundle()
+                        bundle.putInt("id",id)
+                        findNavController().navigate(R.id.action_fragment_home_to_fragment_movies_details,bundle)
                     }
                     binding.feedItemsList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
                     binding.feedItemsList.adapter = adapter

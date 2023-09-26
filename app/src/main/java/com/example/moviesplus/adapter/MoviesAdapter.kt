@@ -5,6 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.moviesplus.R
 import com.example.moviesplus.common.CommonUtils
 import com.example.moviesplus.databinding.ItemMediaBinding
@@ -34,7 +37,7 @@ class MoviesAdapter(private var list: List<DiscoverMoviesList>, val onItemClick:
         private val binding = ItemPosterBinding.bind(view)
 
         fun bind(itemId: Int, image: String) {
-            Picasso.get().load(image).into(binding.posterImage)
+            Glide.with(itemView).load(image).transform(CenterCrop(), RoundedCorners(8)).into(binding.posterImage)
             binding.posterImage.setOnClickListener {
                 onItemClick(itemId)
             }
