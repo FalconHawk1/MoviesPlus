@@ -2,6 +2,7 @@ package com.example.moviesplus.remote
 
 import com.example.moviesplus.model.MoviesDetailsResponse
 import com.example.moviesplus.model.MoviesResponse
+import com.example.moviesplus.model.TvDetailsResponse
 import com.example.moviesplus.model.TvResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -21,4 +22,6 @@ interface APIService {
     suspend fun popularTvShow(): Response<TvResponse?>?
     @GET("movie/{movieId}")
     suspend fun moviesDetails(@Path("movieId") movieId: Int): Response<MoviesDetailsResponse?>?
+    @GET("tv/{series_id}")
+    suspend fun tvShowsDetails(@Path("series_id") tvId: Int): Response<TvDetailsResponse?>?
 }

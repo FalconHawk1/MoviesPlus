@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.moviesplus.R
 import com.example.moviesplus.adapter.PopularMoviesAdapter
 import com.example.moviesplus.adapter.PopularTvShowAdapter
 import com.example.moviesplus.databinding.FragmentPopularMoviesBinding
@@ -53,9 +54,9 @@ class PopularTvFragment: Fragment() {
         viewModel.tv.observe(viewLifecycleOwner) {
             it?.let {
                 adapter = PopularTvShowAdapter(it.results){ id->
-                    Toast.makeText(requireContext(), "Mi id es: $id", Toast.LENGTH_SHORT).show()
-                    //findNavController().navigate(R.id.)
-                    //findNavController().navigate(MoviesFragmentDirections.actionMoviesFragmentToDetailFragment(id))
+                    val bundle = Bundle()
+                    bundle.putInt("id",id)
+                    findNavController().navigate(R.id.action_fragment_tv_to_fragment_tv_details,bundle)
                 }
 
                 val layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
