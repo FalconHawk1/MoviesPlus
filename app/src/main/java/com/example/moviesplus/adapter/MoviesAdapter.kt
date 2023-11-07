@@ -29,7 +29,7 @@ class MoviesAdapter(private var list: List<DiscoverMoviesList>, val onItemClick:
     override fun getItemCount(): Int = list.size
     override fun onBindViewHolder(holder: MoviesHorizontalListViewHolder, position: Int) {
         val item = list[position]
-        holder.bind(item.id,CommonUtils.IMAGE_URL_BASE + item.backdrop_path)
+        holder.bind(item.id,CommonUtils.IMAGE_URL_BASE + item.poster_path)
     }
 
      inner class MoviesHorizontalListViewHolder(view: View) : RecyclerView.ViewHolder(view) {

@@ -27,7 +27,7 @@ class PopularMoviesAdapter(private var list: List<DiscoverMoviesList>, val onIte
     override fun getItemCount(): Int = list.size
     override fun onBindViewHolder(holder: PopularMoviesViewHolder, position: Int) {
         val item = list[position]
-        holder.bind(item.id, CommonUtils.IMAGE_URL_BASE + item.backdrop_path)
+        holder.bind(item.id, CommonUtils.IMAGE_URL_BASE + item.poster_path)
     }
 
     inner class PopularMoviesViewHolder(view: View) : RecyclerView.ViewHolder(view) {

@@ -27,7 +27,7 @@ class PopularTvShowAdapter (private var list: List<DiscoverTvList>, val onItemCl
     override fun getItemCount(): Int = list.size
     override fun onBindViewHolder(holder: PopularTvShowViewHolder, position: Int) {
         val item = list[position]
-        holder.bind(item.id, CommonUtils.IMAGE_URL_BASE + item.backdropPath)
+        holder.bind(item.id, CommonUtils.IMAGE_URL_BASE + item.posterPath)
     }
 
     inner class PopularTvShowViewHolder(view: View) : RecyclerView.ViewHolder(view) {

@@ -1,5 +1,6 @@
 package com.example.moviesplus.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -50,6 +51,11 @@ class HomeFragment: Fragment() {
         binding.tvShows.setOnClickListener {
             Toast.makeText(context, "Hello, I am a TextView!", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_fragment_home_to_fragment_tv)
+        }
+
+        binding.searchIcon.setOnClickListener {
+            Toast.makeText(context, "Hello, I am a SearchView!", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_fragment_home_to_fragment_search)
         }
     }
 

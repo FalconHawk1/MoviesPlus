@@ -1,26 +1,26 @@
-package com.example.moviesplus.ui.movies
+package com.example.moviesplus.ui.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.moviesplus.R
-import com.example.moviesplus.adapter.MoviesAdapter
 import com.example.moviesplus.adapter.PopularMoviesAdapter
+import com.example.moviesplus.adapter.SearchAdapter
 import com.example.moviesplus.databinding.FragmentPopularMoviesBinding
+import com.example.moviesplus.databinding.FragmentSearchBinding
+import com.example.moviesplus.ui.movies.PopularMoviesViewModel
 
-class PopularMoviesFragment : Fragment() {
+class SearchFragment : Fragment() {
 
-    lateinit var binding: FragmentPopularMoviesBinding
-    private lateinit var viewModel: PopularMoviesViewModel
-    private lateinit var adapter: PopularMoviesAdapter
+    lateinit var binding: FragmentSearchBinding
+    private lateinit var viewModel: SearchResultsViewModel
+    private lateinit var adapter: SearchAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,9 +28,9 @@ class PopularMoviesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(this)[PopularMoviesViewModel::class.java]
+        viewModel = ViewModelProvider(this)[SearchResultsViewModel::class.java]
 
-        binding = FragmentPopularMoviesBinding.inflate(inflater, container, false)
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
 
         observerViewModel()
 
@@ -52,17 +52,17 @@ class PopularMoviesFragment : Fragment() {
 
         viewModel.movies.observe(viewLifecycleOwner) {
             it?.let {
-                adapter = PopularMoviesAdapter(it.results){ id->
+                adapter = SearchAdapter(it.results){ id->
                     val bundle = Bundle()
                     bundle.putInt("id",id)
-                    findNavController().navigate(R.id.action_fragment_movies_to_fragment_movies_details,bundle)
+                    findNavController().navigate(R.id.action_fragment_search_to_fragment_movies_details,bundle)
                 }
 
-                val layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+                val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
 
-                binding.popularMoviesList.layoutManager = layoutManager
+                binding.topSearchesList.layoutManager = layoutManager
 
-                binding.popularMoviesList.adapter = adapter
+                binding.topSearchesList.adapter = adapter
             }
         }
     }

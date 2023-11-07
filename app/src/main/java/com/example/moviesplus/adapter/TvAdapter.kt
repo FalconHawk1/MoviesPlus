@@ -29,7 +29,7 @@ class TvAdapter(private var list: List<DiscoverTvList>, val onItemClick:(itemId:
     override fun getItemCount(): Int = list.size
     override fun onBindViewHolder(holder: TvViewHolder, position: Int) {
         val item = list[position]
-        holder.bind(item.id,CommonUtils.IMAGE_URL_BASE + item.backdropPath)
+        holder.bind(item.id,CommonUtils.IMAGE_URL_BASE + item.posterPath)
     }
 
     inner class TvViewHolder(view: View) : RecyclerView.ViewHolder(view) {
