@@ -20,21 +20,35 @@ class HomeViewModel : ViewModel(){
     private val _tv:MutableLiveData<TvResponse> = MutableLiveData()
     val tv:LiveData<TvResponse> get() = _tv
 
+    private val _tvTopRated:MutableLiveData<TvResponse> = MutableLiveData()
+    val tvTopRated:LiveData<TvResponse> get() = _tvTopRated
+
+    private val _moviesTopRated:MutableLiveData<MoviesResponse> = MutableLiveData()
+    val moviesTopRated:LiveData<MoviesResponse> get() = _moviesTopRated
+
 
     fun getMovies(){
         viewModelScope.launch {
             val response = homeRepository.discoverMovies()
             _movies.value = response
-
-            Log.d("TAGI", _movies.value.toString())
         }
     }
     fun getTv(){
         viewModelScope.launch {
             val response = homeRepository.discoverTv()
             _tv.value = response
-
-            Log.d("TAGI", _tv.value.toString())
+        }
+    }
+    fun getTopRatedTv(){
+        viewModelScope.launch {
+            val response = homeRepository.topRatedTvShow()
+            _tvTopRated.value = response
+        }
+    }
+    fun getTopRatedMovies(){
+        viewModelScope.launch {
+            val response = homeRepository.topRatedMovies()
+            _moviesTopRated.value = response
         }
     }
 }

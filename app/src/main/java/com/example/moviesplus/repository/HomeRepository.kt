@@ -24,4 +24,18 @@ class HomeRepository {
             response!!.body()!!
         }
     }
+
+    suspend fun topRatedTvShow(): TvResponse {
+        return withContext(Dispatchers.IO){
+            val response = apiService.topRatedTvShow()
+            response!!.body()!!
+        }
+    }
+
+    suspend fun topRatedMovies(): MoviesResponse {
+        return withContext(Dispatchers.IO){
+            val response = apiService.topRatedMovies()
+            response!!.body()!!
+        }
+    }
 }

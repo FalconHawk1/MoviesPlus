@@ -24,4 +24,8 @@ interface APIService {
     suspend fun moviesDetails(@Path("movieId") movieId: Int): Response<MoviesDetailsResponse?>?
     @GET("tv/{series_id}")
     suspend fun tvShowsDetails(@Path("series_id") tvId: Int): Response<TvDetailsResponse?>?
+    @GET("tv/top_rated")
+    suspend fun topRatedTvShow(): Response<TvResponse?>?
+    @GET("movie/top_rated")
+    suspend fun topRatedMovies(): Response<MoviesResponse?>?
 }

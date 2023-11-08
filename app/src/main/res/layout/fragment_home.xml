@@ -165,6 +165,44 @@
                 android:layout_marginTop="10dp"
                 tools:listitem="@layout/item_media"/>
 
+            <TextView
+                android:id="@+id/txtTvTopRatedItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Top Ranked Tv Shows"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tv_top_rated_items_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:itemCount="1"
+                android:layout_marginTop="10dp"
+                tools:listitem="@layout/item_media"/>
+
+            <TextView
+                android:id="@+id/txtMoviesTopRatedItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Top Ranked Movies"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/movies_top_rated_items_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:itemCount="1"
+                android:layout_marginTop="10dp"
+                tools:listitem="@layout/item_media"/>
+
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

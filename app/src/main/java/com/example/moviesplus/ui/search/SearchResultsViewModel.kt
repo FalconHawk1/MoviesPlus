@@ -22,8 +22,6 @@ class SearchResultsViewModel: ViewModel() {
         viewModelScope.launch {
             val response = popularMoviesRepository.popularMovies()
             _popularMovies.value = response
-
-            Log.d("TAGI23", _popularMovies.value.toString())
         }
     }
 }

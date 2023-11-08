@@ -1,6 +1,5 @@
 package com.example.moviesplus.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +14,8 @@ import com.example.moviesplus.adapter.MoviesHeaderAdapter
 import com.example.moviesplus.adapter.TvAdapter
 import com.example.moviesplus.databinding.FragmentHomeBinding
 import androidx.navigation.fragment.findNavController
+import com.example.moviesplus.adapter.MoviesTopRatedAdapter
+import com.example.moviesplus.adapter.TvTopRatedAdapter
 
 class HomeFragment: Fragment() {
 
@@ -23,6 +24,8 @@ class HomeFragment: Fragment() {
     private lateinit var adapter: MoviesAdapter
     private lateinit var adapterHeader: MoviesHeaderAdapter
     private lateinit var adapterTv: TvAdapter
+    private lateinit var adapterTvTopRated: TvTopRatedAdapter
+    private lateinit var adapterMoviesTopRated: MoviesTopRatedAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,6 +68,10 @@ class HomeFragment: Fragment() {
 
         viewModel.getTv()
 
+        viewModel.getTopRatedTv()
+
+        viewModel.getTopRatedMovies()
+
                 viewModel.movies.observe(viewLifecycleOwner) {
                 it?.let {
                     adapter = MoviesAdapter(it.results){ id->
@@ -99,5 +106,34 @@ class HomeFragment: Fragment() {
                         binding.tvItemsList.adapter = adapterTv
                     }
                 }
+
+                viewModel.tvTopRated.observe(viewLifecycleOwner) {
+                    it?.let {
+                        adapterTvTopRated = TvTopRatedAdapter(it.results){ id->
+                            Toast.makeText(requireContext(), "Mi id es: $id", Toast.LENGTH_SHORT).show()
+                            val bundle = Bundle()
+                            bundle.putInt("id",id)
+                            findNavController().navigate(R.id.action_fragment_home_to_fragment_tv_details,bundle)
+                        }
+                        binding.tvTopRatedItemsList.layoutManager =
+                            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                        binding.tvTopRatedItemsList.adapter = adapterTvTopRated
+                    }
+                }
+
+                viewModel.moviesTopRated.observe(viewLifecycleOwner) {
+                    it?.let {
+                        adapterMoviesTopRated = MoviesTopRatedAdapter(it.results){ id->
+                            Toast.makeText(requireContext(), "Mi id es: $id", Toast.LENGTH_SHORT).show()
+                            val bundle = Bundle()
+                            bundle.putInt("id",id)
+                            findNavController().navigate(R.id.action_fragment_home_to_fragment_tv_details,bundle)
+                        }
+                        binding.moviesTopRatedItemsList.layoutManager =
+                            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                        binding.moviesTopRatedItemsList.adapter = adapterMoviesTopRated
+                    }
+                }
+
     }
 }

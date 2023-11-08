@@ -24,8 +24,6 @@ class PopularTvViewModel: ViewModel() {
         viewModelScope.launch {
             val response = popularTvRepository.popularTvShow()
             _popularTv.value = response
-
-            Log.d("TAGI", _popularTv.value.toString())
         }
     }
 }

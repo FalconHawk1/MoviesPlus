@@ -28,8 +28,6 @@ class TvDetailsViewModel : ViewModel(){
             if(_tvId.value != null) {
                 val response = tvDetailsRepository.getTvDetails(_tvId.value!!)
                 _tvDetails.value = response
-
-                Log.d("TAGI: Movies Details", _tvDetails.value.toString())
             }
         }
     }

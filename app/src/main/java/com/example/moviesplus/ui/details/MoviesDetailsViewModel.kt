@@ -28,8 +28,6 @@ class MoviesDetailsViewModel : ViewModel(){
             if(_movieId.value != null) {
                 val response = moviesDetailsRepository.getMoviesDetails(_movieId.value!!)
                 _moviesDetails.value = response
-
-                Log.d("TAGI: Movies Details", _moviesDetails.value.toString())
             }
         }
     }

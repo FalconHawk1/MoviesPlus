@@ -22,8 +22,6 @@ class PopularMoviesViewModel: ViewModel() {
         viewModelScope.launch {
             val response = popularMoviesRepository.popularMovies()
             _popularMovies.value = response
-
-            Log.d("TAGI", _popularMovies.value.toString())
         }
     }
 }
