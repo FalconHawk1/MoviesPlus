@@ -4,6 +4,7 @@ import com.example.moviesplus.model.MoviesDetailsResponse
 import com.example.moviesplus.model.MoviesResponse
 import com.example.moviesplus.model.TvDetailsResponse
 import com.example.moviesplus.model.TvResponse
+import com.example.moviesplus.model.TvSeasonDetailsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -28,4 +29,9 @@ interface APIService {
     suspend fun topRatedTvShow(): Response<TvResponse?>?
     @GET("movie/top_rated")
     suspend fun topRatedMovies(): Response<MoviesResponse?>?
+    @GET("tv/{tv_id}/season/{season_number}")
+    suspend fun fetchTvSeasonDetails(
+        @Path("tv_id") tvId: Int,
+        @Path("season_number") seasonNumber: Int,
+    ): Response<TvSeasonDetailsResponse?>?
 }
